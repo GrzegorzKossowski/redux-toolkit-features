@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/storeHooks';
-import { addPost, selectAllPosts } from './postsSlice';
+import { addPost, selectAllPosts, selectAllPostsDescByDate } from './postsSlice';
 import { selectAllUsers, selectUserById } from '../users/usersSlice';
 
 const PostComponent = () => {
@@ -10,7 +10,7 @@ const PostComponent = () => {
     const formRef = useRef<HTMLFormElement>(null);
 
     // use selector
-    const posts = useAppSelector(selectAllPosts);
+    const posts = useAppSelector(selectAllPostsDescByDate);
     const users = useAppSelector(selectAllUsers);
 
     const dispach = useAppDispatch();
