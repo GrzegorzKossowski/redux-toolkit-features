@@ -1,6 +1,10 @@
 import React, { useRef } from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/storeHooks';
-import { addPost, selectAllPosts, selectAllPostsDescByDate } from './postsSlice';
+import {
+    addPost,
+    selectAllPosts,
+    selectAllPostsDescByDate,
+} from './postsSlice';
 import { selectAllUsers, selectUserById } from '../users/usersSlice';
 
 const PostComponent = () => {
@@ -20,7 +24,7 @@ const PostComponent = () => {
         const title = titleRef?.current?.value;
         const body = postRef?.current?.value;
         const userId = authorRef?.current?.value;
-        const isFormFilled = Boolean(title) && Boolean(body) && Boolean(userId);
+        const isFormFilled = [title, body, userId].every(Boolean);
 
         if (isFormFilled) {
             dispach(addPost(title, body, userId));
